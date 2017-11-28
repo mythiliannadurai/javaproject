@@ -1,0 +1,91 @@
+drop table user;
+drop table admin;
+drop table location;
+drop table travel;
+create table booking_details(
+    first_name      varchar(20),
+    last_name       varchar(20),
+    age         varchar(20),
+    mail_id        varchar(20),
+no_of_seats varchar(20),
+    constraint      booking_details_first_name__pk     primary key(no_of_seats)
+);
+create table user_details(
+    first_name      varchar(20),
+    last_name       varchar(20),
+    address         varchar(20),
+    date            date,
+    mail_id        varchar(20),
+    constraint      user_details_first_name__pk     primary key(first_name)
+);
+create 
+table location(
+   location_id       varchar(20),
+    location_name      varchar(20),
+     source            varchar(20),
+    destination        varchar(20),
+    fromdate           varchar(20),
+    todate            varchar(20),
+    contraint         location_location_id_pk primary key(location_id)
+
+);
+
+
+
+create 
+table hotel(
+   hotel_id         varchar(20),
+    hotel_name      varchar(20),
+    fromdate        varchar(20),
+    todate          varchar(20),
+    distance        varchar(20),
+    roomtype        varchar(20),
+    contraint       hotel_hotel_id_pk primary key(hotel_id)
+
+);
+
+create table trip_details(
+    userid               varchar(20),
+    starting_date        varchar(20),
+    return_date          varchar(20),
+    mode_of_transport    varchar(20),
+    trip_package         varchar(20),
+    no_of_persons        int()
+    destination varchar   (20),
+    constraint        trip_details_user_id_pk    	 foreign key(destination)   references location(destination)
+);
+
+create 
+table map_router(
+   route_id       varchar(20),
+   route's_name      varchar(20),
+   route_distance      varchar(20),
+   contraint       map_router_route_id_pk primary key(route_id)
+
+);
+
+
+insert into user_details values ("dhivya","bharathi","chennai","2017-09-10","dhivya@gmail.com");
+
+insert into user_details values("mythili","annadurai","palaghat","2017-10-07","myyhili@gmail.com");
+insert into user_details values("james","joe","kanyakumari", "2017-08-11","james@gmail.com");
+
+
+create table booked_tickets(
+    username        varchar(20),
+    date_of_journey date,
+    no_of_seats     int(20),
+    ticket_fare    varchar(100)
+  constraint      trip_details_user_id_pk    	 foreign key(no_of_seats)   references booking_details(no_of_seats)
+);
+create table booked_tickets(
+    name        varchar(20),
+    age          varchar(20),
+    mail_id          varchar(20),
+    gender         varchar(20)
+);
+insert into booked_tickets values("dhivya","2017-10-07","20","50000");        
+
+
+ alter table booked_tickets modify no_of_seats to seats_available;
+update booked_tickets set no_of_seats=14 where no_of_seats=20;
